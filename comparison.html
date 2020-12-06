@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang='eng'>
+<html lang="en">
     <head>
         <meta charset = "UTF-8">
-        <title>Comparison</title>
+        <title>Weather Analysis</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css"> 
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-               <!-- navigation bar-->
-               <nav Class="Navbar navbar-expand-1g navbar-light bg-light">
-                <a class = 'navbar-home' href="index.html">Latitude</a>
-                <button class='navbar-toggler' type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                
-                
-                <div class="collapse-navbar">
-                    <ul class="drop-down">
-                        <li class="navbar-icon drop-down">
-                            <a class="nav-link" data-toggle="dropdown" href="#" role='button'>Plots</a>
-                            <div class='dropdown-menu'>
-                                <a class='dropdown-item' href="temperature.html">Max Temperature</a>
-                                <a class='dropdown-item' href="humidity.html">Humidity</a>
-                                <a class='dropdown-item' href="cloudiness.html">Cloudiness</a>
-                                <a class='dropdown-item' href="wind_speed.html">Wind Speed</a>
-                            </div>
-                        </li>
-                        <a href='comparison.html'>Comparison</a>
-                        <a href='data.html'>Data</a>
-                    </ul>
-                </div>
-            </nav> 
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">Latitude</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="data.html">Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="comparison.html">Comparison</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Plots
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="temperature.html">Max Temperature</a>
+          <a class="dropdown-item" href="humidity.html">Humidity</a>
+          <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
+          <a class="dropdown-item" href="wind_speed.html">Wind Speed</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
             <!--Visualization section of main page-->
             <div call="col-md-4">
                 <div class='col-md-12'>

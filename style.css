@@ -48,7 +48,7 @@ nav a{
     content: ' ▾'
 }
 
-nav .navbar-icon{
+li .nav-item{
     margin-top: 4px;
 }
 
@@ -58,7 +58,7 @@ nav .navbar-icon{
     margin-top: 40px;
 }
 .col-md-4{
-    float: right;
+    float: center;
 }
 .container h1{
     font-family: 'Times New Roman', Times, serif;
@@ -98,7 +98,7 @@ h4 {
     border-color: #4aaaa5;
     border-width: thin;
 }
-nav .drop-down {
+li .dropdown {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -124,7 +124,7 @@ nav .drop-down {
 
 .dataframe{
     align-items: center;
-    table-layout: fixed;
+
     width: 100%;
     border-collapse: collapse;
     border: 3px #4aaaa5;
@@ -148,5 +148,11 @@ nav .drop-down {
     .navbar-light .navbar-toggler {
         color: #575555;
         border-color: #ffffff;
+    }
+    .dataframe{
+        width: 50%;
+    }
+    .col-md-12{
+        transform: rotation(-90deg);
     }
 }
