@@ -92,7 +92,7 @@ d3.json(queryUrl, function(response) {
         var labels = [];
         
         // add min and max
-        var legendInfo = '<h1>Earquake Depth</h1>' + 
+        var legendInfo = '<h1>Earthquake Depth (in Km)</h1>' + 
             "<div class=\"labels\">" +
                 "<div class=\"min\">" + limits[0] + "</div>" +
                 "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
