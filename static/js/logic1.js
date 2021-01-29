@@ -80,7 +80,7 @@ d3.json(queryUrl, function(response) {
             '</h3><hr><p>' + new Date(feature.properties.time) + '</p>');
         }
     }).addTo(myMap);
-    console.log(geojson);
+    // console.log(geojson);
 
     // Set up legend
     var legend = L.control({ position: 'bottomright' });
