@@ -29,13 +29,14 @@ html {
 
 .legend li {
   display: inline-block;
-  width: 30px;
+  width: 50px;
   height: 22px;
 }
 
 .legend .min {
   float: left;
   padding-bottom: 5px;
+  word-spacing: 18px;
 }
 
 .legend .max {

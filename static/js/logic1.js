@@ -21,35 +21,34 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 var geojson;
 
-d3.json(queryUrl, function(data) {
-    // geojson = L.choropleth(data, {
-    //     valueProperty: 'coordinates',
-    //     scale: ["#ffffb2", "#b10026"],
-    //     steps: 10,
-    //     mode: 'q',
-    //     style: {
-    //         color: '#fff',
-    //         weight: 1,
-    //         fillOpacity: 0.8
-    //     },
+// d3.json(queryUrl, function(data) {
+//     geojson = L.choropleth(data, {
+//         valueProperty: 'coordinates',
+//         scale: ["#ffffb2", "#b10026"],
+//         steps: 10,
+//         mode: 'q',
+//         style: {
+//             color: '#fff',
+//             weight: 1,
+//             fillOpacity: 0.8
+//         },
 
-    //     onEachFeature: function(feature, layer) {
+//         onEachFeature: function(feature, layer) {
             
-    //         layer.bindPopup('<h3>' + feature.properties.place + 
-    //             '</h3><hr><p>' + new Date(feature.properties.time) + '</p>');
-    //     }
-    // }).addTo(myMap);
-})
+//             layer.bindPopup('<h3>' + feature.properties.place + 
+//                 '</h3><hr><p>' + new Date(feature.properties.time) + '</p>');
+//         }
+//     }).addTo(myMap);
+// })
 
 function getColor(d) {
-    return d > 10 ? '#800026' :
-           d > 6  ? '#BD0026' :
-           d > 5  ? '#E31A1C' :
-           d > 4  ? '#FC4E2A' :
-           d > 3   ? '#FD8D3C' :
-           d > 2   ? '#FEB24C' :
-           d > 1   ? '#FED976' :
-                      '#FFEDA0';
+    return d > 90 ? '#FF0000' :
+           d > 70  ? '#FF3300' :
+           d > 50  ? '#ff9900' :
+           d > 30   ? '#FFFF00' :
+           d > 10   ? '#99ff00' :
+           d > -10   ? '#66ff00' :
+                      '#00FF00';
 }
 
 function style(feature) {
@@ -71,7 +70,7 @@ d3.json(queryUrl, function(response) {
     geojson = L.geoJSON(response, {
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
-                radius: feature.properties.mag * 10,
+                radius: feature.properties.mag * 5,
                 fillColor: getColor(feature.geometry.coordinates[2]),
                 color: ["green", "red"],
                 weight: 1,
@@ -87,15 +86,14 @@ d3.json(queryUrl, function(response) {
     var legend = L.control({ position: 'bottomright' });
     legend.onAdd = function() {
         var div = L.DomUtil.create('div', 'info legend');
-        var limits = [0,1,2,3,4,5,6,10];
-        var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+        var limits = [-10,10,30,50,70,90];
+        var colors = ['#00FF00', '#66ff00', '#99ff00', '#FFFF00', '#ff9900', '#FF3300', '#FF0000'];
         var labels = [];
-        
         // add min and max
-        var legendInfo = '<h1>Earthquake Depth (in Km)</h1>' + 
+        var legendInfo = '<h1>Earthquake Depth (Km) </h1>' + 
             "<div class=\"labels\">" +
-                "<div class=\"min\">" + limits[0] + "</div>" +
-                "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+                "<div class=\"min\">" + limits[0] + '-' + limits[1] + ' ' + limits[1] + '-' + limits[2] + ' ' + limits[2] + '-' + limits[3] + ' ' + limits[3] + '-' + limits[4] + ' ' + limits[4] + '-' + limits[5] + 
+                ' ' + limits[limits.length - 1] + '+' + "</div>" +
             "</div>";
         
         div.innerHTML = legendInfo;
