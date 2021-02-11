@@ -27,7 +27,7 @@ d3.json('countries.geojson').then(function (data) {
           if (e.properties.ADMIN === d.country) {
             e.properties.sui_per_100k_2015 = +d.sui_per_100k_2015,
             e.properties.human_development_index = +d.human_development_index,
-            e.properties.economy_gdp_per_capita_2015 = +d.economy_gdp_per_capita_2015,
+            e.properties.gdp_percapita_2015 = +d.gdp_percapita_2015,
             e.properties.happiness_score_2015 = +d.happiness_score_2015
           }
           // else {
@@ -57,7 +57,7 @@ d3.json('countries.geojson').then(function (data) {
       var gdpLegend = L.control({position: 'bottomright'});
       gdpLegend.onAdd = function (myMap) {
         var div = L.DomUtil.create('div','info legend'),
-          grades = [0.01,0.2,0.5,0.9,1.25,1.5],
+          grades = [300,1000,1500,5000,15000,50000],
           labels = [],
           from, to;
         for (var i = 0; i < grades.length; i++) {
@@ -131,7 +131,7 @@ d3.json('countries.geojson').then(function (data) {
               myMap.fitBounds(event.target.getBounds());
             }
           });
-          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + feature.properties.sui_per_100k_2015 + "</h2>");
+          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + 'Suicides per 100k:' + feature.properties.sui_per_100k_2015 + '<br>' + 'HDI:' + feature.properties.human_development_index + '<br>' + 'GDP per Capita:' + feature.properties.gdp_percapita_2015 + '<br>' + 'Happiness Score:' + feature.properties.happiness_score_2015 + "</h2>");
         }
       })
 
@@ -162,7 +162,7 @@ d3.json('countries.geojson').then(function (data) {
               myMap.fitBounds(event.target.getBounds());
             }
           });
-          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + feature.properties.sui_per_100k_2015 + "</h2>");
+          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + 'Suicides per 100k:' + feature.properties.sui_per_100k_2015 + '<br>' + 'HDI:' + feature.properties.human_development_index + '<br>' + 'GDP per Capita:' + feature.properties.gdp_percapita_2015 + '<br>' + 'Happiness Score:' + feature.properties.happiness_score_2015 + "</h2>");
         }
         
       });
@@ -171,7 +171,7 @@ d3.json('countries.geojson').then(function (data) {
         style: function(feature) {
           return {
             color: 'white',
-            fillColor: getGDPColor(feature.properties.economy_gdp_per_capita_2015),
+            fillColor: getGDPColor(feature.properties.gdp_percapita_2015),
             fillOpacity: 0.8,
             weight: 1.5
           };
@@ -194,7 +194,7 @@ d3.json('countries.geojson').then(function (data) {
               myMap.fitBounds(event.target.getBounds());
             }
           });
-          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + feature.properties.sui_per_100k_2015 + "</h2>");
+          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + 'Suicides per 100k:' + feature.properties.sui_per_100k_2015 + '<br>' + 'HDI:' + feature.properties.human_development_index + '<br>' + 'GDP per Capita:' + feature.properties.gdp_percapita_2015 + '<br>' + 'Happiness Score:' + feature.properties.happiness_score_2015 + "</h2>");
         }
       })
 
@@ -225,7 +225,7 @@ d3.json('countries.geojson').then(function (data) {
               myMap.fitBounds(event.target.getBounds());
             }
           });
-          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + feature.properties.sui_per_100k_2015 + "</h2>");
+          layer.bindPopup("<h1>" + feature.properties.ADMIN + "</h1> <hr> <h2>" + 'Suicides per 100k:' + feature.properties.sui_per_100k_2015 + '<br>' + 'HDI:' + feature.properties.human_development_index + '<br>' + 'GDP per Capita:' + feature.properties.gdp_percapita_2015 + '<br>' + 'Happiness Score:' + feature.properties.happiness_score_2015 + "</h2>");
         }
       })
       var baseMaps = {
@@ -292,12 +292,12 @@ function getSUIColor(d) {
 };
 
 function getGDPColor(d) {
-  return d > 1.5 ? '#1F2209' :
-        d > 1.25 ? '#2F4D19' :
-        d > 0.9 ? '#307335' :
-        d > 0.5 ? '#5E8B52' :
-        d > 0.2 ? '#8CA374' :
-        d > 0.01 ? '#B3BA96' :
+  return d > 50000 ? '#1F2209' :
+        d > 15000 ? '#2F4D19' :
+        d > 5000 ? '#307335' :
+        d > 1500 ? '#5E8B52' :
+        d > 1000 ? '#8CA374' :
+        d > 300 ? '#B3BA96' :
         'black';
 };
 

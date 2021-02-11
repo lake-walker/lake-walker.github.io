@@ -5,7 +5,7 @@ d3.csv('country_data.csv').then(function(data) {
         .enter()
         .append("tr")
         .html(function(d) {
-            return `<td>${d.country}</td> <td>${d.economy_gdp_per_capita_2015}</td> <td>${d.sui_per_100k_2015}</td> <td>${d.happiness_score_2015}</td> <td>${d.human_development_index}</td> <td>${d.happiness_rank_2015}</td> <td>${d.hdi_rank}</td>`;
+            return `<td>${d.country}</td> <td>${d.gdp_percapita_2015}</td> <td>${d.sui_per_100k_2015}</td> <td>${d.happiness_score_2015}</td> <td>${d.human_development_index}</td> <td>${d.happiness_rank_2015}</td> <td>${d.hdi_rank}</td>`;
         });
 
 })

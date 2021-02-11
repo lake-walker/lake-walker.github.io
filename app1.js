@@ -70,7 +70,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
   if (chosenXAxis === "happiness_score_2015") {
     label = "2015 Happiness Index Score";
   }
-  else if (chosenXAxis === "economy_gdp_per_capita_2015") {
+  else if (chosenXAxis === "gdp_percapita_2015") {
     label = "GDP per Capita";
   }
   else {
@@ -81,7 +81,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
     var toolTip = d3.tip()
         .attr("class", "tooltip")
-        .offset([100, 80])
+        .offset([2, 80])
         .html(function(d) {
         return (`${d.country}<br>${label} ${d[chosenXAxis]}<br>Suicides per 100k:  ${d.sui_per_100k_2015}<br>Happiness Rank: ${d.happiness_rank_2015}<br>HDI Rank: ${d.hdi_rank}`);
         });
@@ -138,7 +138,7 @@ d3.csv("country_data.csv").then(function(countryData, err) {
   countryData.forEach(function(data) {
     data.happiness_score_2015 = +data.happiness_score_2015;
     data.sui_per_100k_2015 = +data.sui_per_100k_2015;
-    data.economy_gdp_per_capita_2015 = +data.economy_gdp_per_capita_2015;
+    data.gdp_percapita_2015 = +data.gdp_percapita_2015;
     data.human_development_index = +data.human_development_index;
   });
 
@@ -190,7 +190,7 @@ d3.csv("country_data.csv").then(function(countryData, err) {
   var gdpLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
-    .attr("value", "economy_gdp_per_capita_2015") // value to grab for event listener
+    .attr("value", "gdp_percapita_2015") // value to grab for event listener
     .classed("inactive", true)
     .text("GDP per Capita (2015)");
   
@@ -253,7 +253,7 @@ d3.csv("country_data.csv").then(function(countryData, err) {
         circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
         // changes classes to change bold text
-        if (chosenXAxis === "economy_gdp_per_capita_2015") {
+        if (chosenXAxis === "gdp_percapita_2015") {
             gdpLabel
                 .classed("active", true)
                 .classed("inactive", false);
